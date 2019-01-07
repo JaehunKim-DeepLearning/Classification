@@ -31,10 +31,10 @@
     - Input : 각각 생성된 데이터를 사용(빈도수 X) ---> word, shape_word, noun_word, ngram, jamo1, jamo2, jamo3, bmm
     
     - Layer1 : 사용 데이터 (word, shape_word, noun_word, ngram) - 빈도수 미포함
-    - (Dropout, BatchNormaization, GlobalAveragePooling1D 사용)
+    (Dropout, BatchNormaization, GlobalAveragePooling1D 사용)
     
     - Layer2 : 사용 데이터 (word, shape_word, noun_word, ngram, jamo1, jamo2, jamo3, bmm) - 빈도수 포함
-    - (Dot, Flatten, Dropout, BatchNormalization 사용)
+    (Dot, Flatten, Dropout, BatchNormalization 사용)
     
     - 각각 아웃풋된 데이터들과 image 데이터를 Concatenate한 후 Dropout 및 BatchNormalization, Activation(Relu) 적용
     - 이후 Dense Layer(sigmoid)를 사용 하여 예측
