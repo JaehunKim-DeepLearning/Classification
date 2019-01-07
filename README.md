@@ -2,10 +2,12 @@
 
 1월 14일까지 업데이트 예정
 
-LOGIC1 FOLDER : AVG, DOT 모델 (제출) ---> 제출 오류 Data생성 Seed값이 다른 모델을 사용하여 제출함
+LOGIC1 FOLDER : AVG, DOT 모델 (제출) ---> 제출 오류 Data생성 Seed값이 다른 모델을 사용하여 제출
+
 LOGIC1 MODEL DOWNLOAD ADDRESS : 
 
 LOGIC2 FOLDER : AVG Ensemble 모델 (미제출)
+
 LOGIC2 MODEL DOWNLOAD ADDRESS : 
 
 
