@@ -6,12 +6,14 @@
     기존 Baseline Model에서 크게 변화하지 않는선에서 모델의 성능을 향상 시킴
 
     LOGIC1 FOLDER : AVG, DOT 모델 (제출) ---> Data의 Seed값이 다른 모델을 사용하여 제출(제출 실수)
+                                            Seed값이 같은 경우의 결과 : ACC DEV: 1.030391   ACC Validation: 1.068 
+                                            Seed값이 다른 경우의 결과 : ACC DEV: 1.026281   ACC Validation: 1.064 - 최종 제출된 모델
     LOGIC1 MODEL DOWNLOAD ADDRESS : 
     
     LOGIC2 FOLDER : AVG Ensemble 모델 (미제출)
     LOGIC2 MODEL DOWNLOAD ADDRESS : 
 
-## LOGIC1(AVG, DOT Model)
+## LOGIC1 (AVG, DOT Model)
 
 0. 데이터 생성(각각 데이터의 빈도수도 추가 생성)
     - word(product data 단어 분리) : 야구모자
@@ -37,7 +39,7 @@
     - 이후 Dense Layer(sigmoid)를 사용 하여 예측
     
     
-## LOGIC2(Ensemble Model)
+## LOGIC2 (Ensemble Model)
 
 0. 데이터 생성(아래 데이터 생성 및 UTF-16, UTF-32 인코딩을 사용하여 추가 데이터 생성 및 사전 배치)
     - word(단어) : 야구모자
@@ -109,3 +111,11 @@
 `num_workers`는 전처리 수행 시간과 관련이 있습니다. 장비의 코어수에 적합하게 수정하면 수행시간을 줄이는데 도움이 됩니다.
 
 `num_predict_workers`는 예측 수행 시간과 관련이 있습니다. `num_workers`와 마찬가지로 장비의 코어수에 맞춰 적절히 수정하면 수행시간을 단축하는데 도움이 됩니다.
+
+
+
+## LOGIC RESULT
+
+
+## LOGIC2 RESULT
+
