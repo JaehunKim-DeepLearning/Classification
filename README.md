@@ -1,18 +1,34 @@
 # Classification
 
-1월 14일까지 업데이트 예정
+## KAKAO Classification 대회
+    이번 대회를 통하여 자연어처리를 처음 시작
+    기존 Baseline Model에서 크게 변화하지 않으며 모델의 성능을 향상 시킴
 
-LOGIC1 FOLDER : AVG, DOT 모델 (제출) ---> 제출 오류 Data생성 Seed값이 다른 모델을 사용하여 제출
+    LOGIC1 FOLDER : AVG, DOT 모델 (제출) ---> 제출 오류 Data생성 Seed값이 다른 모델을 사용하여 제출하여 기존모델의 성능보다 떨어진 채로 제출
+    LOGIC1 MODEL DOWNLOAD ADDRESS : 
+    
+    LOGIC2 FOLDER : AVG Ensemble 모델 (미제출) ---> 위의 모델과 비슷한 성능을 보임
+    LOGIC2 MODEL DOWNLOAD ADDRESS : 
 
-LOGIC1 MODEL DOWNLOAD ADDRESS : 
-
-LOGIC2 FOLDER : AVG Ensemble 모델 (미제출)
-
-LOGIC2 MODEL DOWNLOAD ADDRESS : 
-
-## LOGIC1
+## LOGIC1(AVG, DOT, Image Model)
 0. 
-
+## LOGIC2(Ensemble Model)
+0. 데이터 생성(아래 데이터 생성 및 UTF-16, UTF-32 인코딩을 사용하여 추가 데이터 생성 및 사전 배치)
+    - word(단어) : 야구모자
+    - shape_word(형태소 단위 단어, 형태) : 야구모자 ---> (야구, 명사), (모자, 명사)
+    - noun_word(형태소 단위 단어) : 야구모자 ---> (야구), (모자)
+    - ngram(한글자 단위) : 야구모자 ---> 야, 구, 모, 자
+    - jamo1(단어 단위의 자음모음) : 야구모자 ---> (ㅇ,ㅑ,ㄱ,ㅜ,ㅁ,ㅗ,ㅈ,ㅏ)
+    - jamo2(한글자 단위의 자음모음) : 야구모자 ---> (ㅇㅑ),(ㄱㅜ),(ㅁㅗ),(ㅈㅏ)
+1. Model Network
+    - Input : 각각 생성된 데이터를 사용(빈도수 X) ---> word, shape_word, noun_word, ngram, jamo1, jamo2
+    - 임베딩 레이어를 거친 값을 Dropout, BatchNormalization, GlobalAveragePooling1D를 통하여 128의 Word 벡터로 정제 
+    - 정제 후 L2 Regualarization 0.000001을 통하여 정규화
+    - 정규화된 데이터들과 Resnet을 통한 image 데이터를 Concatenate한 후 Dropout 및 BatchNormalization 적용
+    - 이후 Dense Layer(sigmoid)를 사용 하여 예측
+2. Model Ensemble
+    - 기존데이터 모델, UTF-16모델, UTF-32모델 (인풋 데이터를 달리하여 3개의 모델 생성)
+    - 생성된 3개의 모델의 예측값의 평균을 산출하여 최종 결과 생성
 
 ## 실행 방법
 
