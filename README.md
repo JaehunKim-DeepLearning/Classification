@@ -11,7 +11,8 @@
     LOGIC2 FOLDER : AVG Ensemble 모델 (미제출)
     LOGIC2 MODEL DOWNLOAD ADDRESS : 
 
-## LOGIC1(AVG, DOT, Image Model)
+## LOGIC1(AVG, DOT Model)
+
 0. 데이터 생성(각각 데이터의 빈도수도 추가 생성)
     - word(product data 단어 분리) : 야구모자
     - shape_word(형태소 단위 단어, 형태) : 야구모자 ---> (야구, 명사), (모자, 명사)
@@ -32,11 +33,12 @@
     - Layer2 : 사용 데이터 (word, shape_word, noun_word, ngram, jamo1, jamo2, jamo3, bmm) - 빈도수 포함
     - (Dot, Flatten, Dropout, BatchNormalization 사용)
     
-    - 각각 아웃풋된 데이터들과 image 데이터를 Concatenate한 후 Dropout 및 BatchNormalization 적용
+    - 각각 아웃풋된 데이터들과 image 데이터를 Concatenate한 후 Dropout 및 BatchNormalization, Activation(Relu) 적용
     - 이후 Dense Layer(sigmoid)를 사용 하여 예측
     
     
 ## LOGIC2(Ensemble Model)
+
 0. 데이터 생성(아래 데이터 생성 및 UTF-16, UTF-32 인코딩을 사용하여 추가 데이터 생성 및 사전 배치)
     - word(단어) : 야구모자
     - shape_word(형태소 단위 단어, 형태) : 야구모자 ---> (야구, 명사), (모자, 명사)
@@ -50,7 +52,7 @@
     - Input : 각각 생성된 데이터를 사용(빈도수 X) ---> word, shape_word, noun_word, ngram, jamo1, jamo2
     - 임베딩 레이어를 거친 값을 Dropout, BatchNormalization, GlobalAveragePooling1D를 통하여 128의 Word 벡터로 정제 
     - 정제 후 L2 Regualarization 0.000001을 통하여 정규화
-    - 정규화된 데이터들과 image 데이터를 Concatenate한 후 Dropout 및 BatchNormalization 적용
+    - 정규화된 데이터들과 image 데이터를 Concatenate한 후 Dropout 및 BatchNormalization, Activation(Relu) 적용
     - 이후 Dense Layer(sigmoid)를 사용 하여 예측
     
 2. Model Ensemble
