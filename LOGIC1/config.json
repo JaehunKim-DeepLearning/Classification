@@ -29,7 +29,6 @@
     "num_predict_workers": 14,
     "embd_size": 128,
     "early_stop": 1,
-    "lr": 3e-5,
     "num_epochs": 200,
     "batch_size": 4096
 }
