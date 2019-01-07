@@ -4,7 +4,7 @@
 
 LOGIC1 FOLDER : AVG, DOT 모델 (제출)
 
-LOGIC2 FOLDER : Ensemble Test 모델 (미제출)
+LOGIC2 FOLDER : AVG Ensemble 모델 (미제출)
 
 
 
