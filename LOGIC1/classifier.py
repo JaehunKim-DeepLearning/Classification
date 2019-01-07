@@ -35,8 +35,8 @@ if six.PY2:
     cate1 = json.loads(open('../cate1.json').read())
 else:
     cate1 = json.loads(open('../cate1.json', 'rb').read().decode('utf-8'))
-DEV_DATA_LIST = ['../dev.chunk.01']
-
+#DEV_DATA_LIST = ['../dev.chunk.01']
+DEV_DATA_LIST = ['../test.chunk.01', '../test.chunk.02']
 class Classifier():
     def __init__(self):
         self.logger = get_logger('Classifier')
@@ -64,12 +64,12 @@ class Classifier():
 
     def write_prediction_result(self, data, pred_y, data_root, meta, out_path, readable):
         pid_order = []
-        #for data_path in DEV_DATA_LIST:
-        #    h = h5py.File(data_path, 'r')['dev']
-        #    pid_order.extend(h['pid'][::])
+        for data_path in DEV_DATA_LIST:
+            h = h5py.File(data_path, 'r')['test']
+            pid_order.extend(h['pid'][::])
 
-        h = h5py.File(data_root + '/data.h5py', 'r')['dev']
-        pid_order.extend(h['pid'][::])
+        #h = h5py.File(data_root + '/data.h5py', 'r')['dev']
+        #pid_order.extend(h['pid'][::])
 
         y2l = {i: s for s, i in six.iteritems(meta['y_vocab'])}
         y2l = list(map(lambda x: x[1], sorted(y2l.items(), key=lambda x: x[0])))
