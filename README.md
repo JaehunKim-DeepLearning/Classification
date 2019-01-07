@@ -11,6 +11,7 @@
     LOGIC1 MODEL DOWNLOAD ADDRESS : 
     
     LOGIC2 FOLDER : AVG Ensemble 모델 (미제출)
+                                            ACC DEV : 1.029758  ACC Validation: 1.068
     LOGIC2 MODEL DOWNLOAD ADDRESS : 
 
 ## LOGIC1 (AVG, DOT Model)
