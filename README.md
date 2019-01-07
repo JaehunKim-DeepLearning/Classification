@@ -10,6 +10,9 @@ LOGIC2 FOLDER : AVG Ensemble 모델 (미제출)
 
 LOGIC2 MODEL DOWNLOAD ADDRESS : 
 
+## LOGIC1
+0. 
+
 
 ## 실행 방법
 
