@@ -27,7 +27,7 @@
     - bmm (brand+model+maker data 사용)
     - image : Resnet을 통한 image 데이터
     
-1. Model Network
+1. Model Network (학습 소요시간 약8200s : 1080ti 기준)
     - Input : 각각 생성된 데이터를 임베딩(빈도수 X) ---> `word, shape_word, noun_word, ngram, jamo1, jamo2, jamo3, bmm`
     - Layer1 Input: 사용 데이터 (`word, shape_word, noun_word, ngram`) - 빈도수 미포함
     - Layer1 Network: `Dropout, BatchNormaization, GlobalAveragePooling1D`
@@ -48,7 +48,7 @@
     - jamo2 (한글자 단위의 자음모음) : 야구모자 ---> (ㅇㅑ),(ㄱㅜ),(ㅁㅗ),(ㅈㅏ)
     - image : Resnet을 통한 image 데이터
     
-1. Model Network
+1. Model Network (학습 소요시간 약8000s : 1080ti 기준)
     - Input : 각각 생성된 데이터를 임베딩(빈도수 X) ---> `word, shape_word, noun_word, ngram, jamo1, jamo2`
     - 임베딩된 값을 `Dropout, BatchNormalization, GlobalAveragePooling1D`를 사용
     - 정제 후 `L2 Regualarization 0.000001`을 통하여 정규화
