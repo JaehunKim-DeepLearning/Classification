@@ -37,7 +37,7 @@
     - 이후 `Dense Layer(sigmoid)`를 사용 하여 예측
     
     
-## LOGIC2 (Ensemble Model)
+## LOGIC2 (Encoding Ensemble Model)
 
 0. 데이터 생성(아래 데이터 생성 및 `UTF-16`, `UTF-32` 인코딩을 사용하여 추가 데이터 생성 및 사전 배치)
     - word (단어) : 야구모자
