@@ -12,7 +12,7 @@
     
     LOGIC2 FOLDER : AVG Ensemble 모델 (미제출)
                                             ACC DEV : 1.029758  ACC Validation: 1.068
-    LOGIC2 PRE-TRAINED MODEL DOWNLOAD ADDRESS : 
+    LOGIC2 PRE-TRAINED MODEL DOWNLOAD ADDRESS : https://drive.google.com/file/d/10Py1G2H-krK4lrTJdc9tCb3-GgO5i7zo/view?usp=sharing
 
 ## LOGIC1 (AVG, DOT Model)
 
