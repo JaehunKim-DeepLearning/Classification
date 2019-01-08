@@ -18,8 +18,8 @@
 
 0. 데이터 생성(각각 데이터의 빈도수도 추가 생성)
     - word (product data 단어 분리) : 야구모자
-    - shape_word (형태소 단위 단어, 형태) : 야구모자 ---> (야구, 명사), (모자, 명사)
-    - noun_word (형태소 단위 단어) : 야구모자 ---> (야구), (모자)
+    - shape_word (형태소 단위 단어, 형태) : 야구모자 ---> (야구, 명사), (모자, 명사) :::Mecab형태소 분석기 사용
+    - noun_word (형태소 단위 단어) : 야구모자 ---> (야구), (모자) :::Mecab형태소 분석기 사용
     - ngram (한글자 단위) : 야구모자 ---> 야, 구, 모, 자
     - jamo1 (단어 단위의 자음모음) : 야구모자 ---> (ㅇㅑ,ㄱㅜ,ㅁㅗ,ㅈㅏ)
     - jamo2 (한글자 단위의 자음모음) : 야구모자 ---> (ㅇㅑ),(ㄱㅜ),(ㅁㅗ),(ㅈㅏ)
@@ -28,32 +28,32 @@
     - image : Resnet을 통한 image 데이터
     
 1. Model Network
-    - Input : 각각 생성된 데이터를 임베딩(빈도수 X) ---> word, shape_word, noun_word, ngram, jamo1, jamo2, jamo3, bmm
-    - Layer1 Input: 사용 데이터 (word, shape_word, noun_word, ngram) - 빈도수 미포함
-    - Layer1 Network: Dropout, BatchNormaization, GlobalAveragePooling1D 사용
-    - Layer2 Input: 사용 데이터 (word, shape_word, noun_word, ngram, jamo1, jamo2, jamo3, bmm) - 빈도수 포함
-    - Layer2 Network : Dot, Flatten, Dropout, BatchNormalization 사용
-    - 각각 아웃풋된 데이터들과 image 데이터를 Concatenate한 후 Dropout 및 BatchNormalization, Activation(Relu) 적용
-    - 이후 Dense Layer(sigmoid)를 사용 하여 예측
+    - Input : 각각 생성된 데이터를 임베딩(빈도수 X) ---> `word, shape_word, noun_word, ngram, jamo1, jamo2, jamo3, bmm`
+    - `Layer1 Input`: 사용 데이터 (`word, shape_word, noun_word, ngram`) - 빈도수 미포함
+    - `Layer1 Network`: `Dropout, BatchNormaization, GlobalAveragePooling1D`
+    - `Layer2 Input`: 사용 데이터 (`word, shape_word, noun_word, ngram, jamo1, jamo2, jamo3, bmm`) - 빈도수 포함
+    - `Layer2 Network` : `Dot, Flatten, Dropout, BatchNormalization`
+    - 각각 아웃풋된 데이터들과 `image` 데이터를 `Concatenate`한 후 `Dropout` 및 `BatchNormalization, Activation(Relu)` 적용
+    - 이후 `Dense Layer(sigmoid)`를 사용 하여 예측
     
     
 ## LOGIC2 (Ensemble Model)
 
 0. 데이터 생성(아래 데이터 생성 및 UTF-16, UTF-32 인코딩을 사용하여 추가 데이터 생성 및 사전 배치)
     - word (단어) : 야구모자
-    - shape_word (형태소 단위 단어, 형태) : 야구모자 ---> (야구, 명사), (모자, 명사)
-    - noun_word (형태소 단위 단어) : 야구모자 ---> (야구), (모자)
+    - shape_word (형태소 단위 단어, 형태) : 야구모자 ---> (야구, 명사), (모자, 명사)  :::Mecab형태소 분석기 사용
+    - noun_word (형태소 단위 단어) : 야구모자 ---> (야구), (모자)  :::Mecab형태소 분석기 사용
     - ngram (한글자 단위) : 야구모자 ---> 야, 구, 모, 자
     - jamo1 (단어 단위의 자음모음) : 야구모자 ---> (ㅇ,ㅑ,ㄱ,ㅜ,ㅁ,ㅗ,ㅈ,ㅏ)
     - jamo2 (한글자 단위의 자음모음) : 야구모자 ---> (ㅇㅑ),(ㄱㅜ),(ㅁㅗ),(ㅈㅏ)
     - image : Resnet을 통한 image 데이터
     
 1. Model Network
-    - Input : 각각 생성된 데이터를 임베딩(빈도수 X) ---> word, shape_word, noun_word, ngram, jamo1, jamo2
-    - 임베딩된 값을 Dropout, BatchNormalization, GlobalAveragePooling1D를 사용
-    - 정제 후 L2 Regualarization 0.000001을 통하여 정규화
-    - 정규화된 데이터들과 image 데이터를 Concatenate한 후 Dropout 및 BatchNormalization, Activation(Relu) 적용
-    - 이후 Dense Layer(sigmoid)를 사용 하여 예측
+    - Input : 각각 생성된 데이터를 임베딩(빈도수 X) ---> `word, shape_word, noun_word, ngram, jamo1, jamo2`
+    - 임베딩된 값을 `Dropout, BatchNormalization, GlobalAveragePooling1D`를 사용
+    - 정제 후 `L2 Regualarization 0.000001`을 통하여 정규화
+    - 정규화된 데이터들과 `image` 데이터를 `Concatenate`한 후 `Dropout 및 BatchNormalization, Activation(Relu)` 적용
+    - 이후 `Dense Layer(sigmoid)`를 사용 하여 예측
     
 2. Model Ensemble
     - 기존데이터 모델, UTF-16모델, UTF-32모델 (인풋 데이터를 달리하여 3개의 모델 생성)
