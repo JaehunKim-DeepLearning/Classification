@@ -116,7 +116,7 @@ class TextOnly:
             outputs = Dense(num_classes, activation=activation)(result)
             ####################################
             model = Model(inputs=[uni, w_uni, shape, w_shape, noun, w_noun, bmm, w_bmm, ngram, w_ngram, jamo3, w_jamo3, jamo2, w_jamo2, jamo1, w_jamo1, img], outputs=outputs)
-            optm = keras.optimizers.adam(0.00003)
+            optm = keras.optimizers.adam(0.0002)
             
             model.compile(loss='categorical_crossentropy',
                         optimizer=optm,
