@@ -30,6 +30,6 @@
     "embd_size": 128,
     "early_stop": 1,
     "num_epochs": 200,
-    "batch_size": 4096
+    "batch_size": 7000
 }
  
