@@ -182,7 +182,6 @@ class Data:
         with open(out_path, 'w') as f:
             f.write(cPickle.dumps(rets, 2))
             f.close()
-        #open(out_path, 'w').write(cPickle.dumps(rets, 2))
         self.logger.info('%s ~ %s done. (size: %s)' % (begin_offset, end_offset, end_offset - begin_offset))
 
 
@@ -249,7 +248,6 @@ class Data:
         noun_word = []
         for i in shape_word:
             noun_word.append(i[0])
-        #noun_word = list(mecab.pos(strip_uni_product))
 
         ngram_product = re_sc.sub(' ', uni_product).strip()
         ngram = ngram_product.replace(" ","")
