@@ -276,7 +276,7 @@ class Data:
         jamo = jamo.replace(u"ᴥ", "")
         jamo = jamo.replace(" ","")
 
-        hash_func = hash if six.PY2 else lambda x: mmh3.hash(x, seed=100)
+        hash_func = hash if six.PY2 else lambda x: mmh3.hash(x, seed=17)
         x = [hash_func(w) % opt.unigram_hash_size + 1 for w in words]
         s = [hash_func(w) % opt.unigram_hash_size + 1 for w in shape_word]
         N = [hash_func(w) % opt.unigram_hash_size + 1 for w in noun_word]
