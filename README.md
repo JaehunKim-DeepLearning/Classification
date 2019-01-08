@@ -28,7 +28,7 @@
     - image : Resnet을 통한 image 데이터
     
 1. Model Network
-    - Input : 각각 생성된 데이터를 사용(빈도수 X) ---> word, shape_word, noun_word, ngram, jamo1, jamo2, jamo3, bmm
+    - Input : 각각 생성된 데이터를 임베딩(빈도수 X) ---> word, shape_word, noun_word, ngram, jamo1, jamo2, jamo3, bmm
     - Layer1 Input: 사용 데이터 (word, shape_word, noun_word, ngram) - 빈도수 미포함
     - Layer1 Network: Dropout, BatchNormaization, GlobalAveragePooling1D 사용
     - Layer2 Input: 사용 데이터 (word, shape_word, noun_word, ngram, jamo1, jamo2, jamo3, bmm) - 빈도수 포함
@@ -49,8 +49,8 @@
     - image : Resnet을 통한 image 데이터
     
 1. Model Network
-    - Input : 각각 생성된 데이터를 사용(빈도수 X) ---> word, shape_word, noun_word, ngram, jamo1, jamo2
-    - 임베딩 레이어를 거친 값을 Dropout, BatchNormalization, GlobalAveragePooling1D를 통하여 128의 Word 벡터로 정제 
+    - Input : 각각 생성된 데이터를 임베딩(빈도수 X) ---> word, shape_word, noun_word, ngram, jamo1, jamo2
+    - 임베딩된 값을 Dropout, BatchNormalization, GlobalAveragePooling1D를 사용
     - 정제 후 L2 Regualarization 0.000001을 통하여 정규화
     - 정규화된 데이터들과 image 데이터를 Concatenate한 후 Dropout 및 BatchNormalization, Activation(Relu) 적용
     - 이후 Dense Layer(sigmoid)를 사용 하여 예측
@@ -62,33 +62,24 @@
 
 ## 실행 방법
 
-0. 데이터의 위치
-    - 내려받은 데이터의 위치는 소스가 실행될 디렉토리의 상위 디렉토리로(../) 가정되어 있습니다.
+0. 데이터 위치
+    - 데이터의 위치는 소스가 실행될 디렉토리의 상위 디렉토리로(../) 가정되어.
     - 데이터 위치를 바꾸기 위해서는 각 소스의 상단에 정의된 경로를 바꿔주세요.
-1. `python data.py make_db train`
-    - 학습에 필요한 데이터셋을 생성합니다. (h5py 포맷) dev, test도 동일한 방식으로 생성할 수 있습니다.
-    - 위 명령어를 수행하면 `train` 데이터의 80%는 학습, 20%는 평가로 사용되도록 데이터가 나뉩니다.
-    - 이 명령어를 실행하기 전에 `python data.py build_y_vocab`으로 데이터 생성이 필요한데, 코드 레파지토리에 생성한 파일이 포함되어 다시 만들지 않아도 됩니다. 
-      - Python 2는 `y_vocab.cPickle` 파일을 사용하고, Python 3은 `y_vocab.py3.cPickle` 파일을 사용합니다.
-    - `config.json` 파일에 동시에 처리할 프로세스 수를 `num_workers`로 조절할 수 있습니다.
-2. `python classifier.py train ./data/train ./model/train`
-    - `./data/train`에 생성한 데이터셋으로 학습을 진행합니다.
-    - 완성된 모델은 `./model/train`에 위치합니다.
-3. `python classifier.py predict ./data/train ./model/train ./data/train/ dev predict.tsv`
-    - 단계 1. 에서 `train`의 20%로 생성한 평가 데이터에 대해서 예측한 결과를 `predict.tsv`에 저장합니다.
-4. `python evaluate.py evaluate predict.tsv ./data/train/data.h5py dev ./data/y_vocab.cPickle`
+1. 학습 데이터 생성(train 80%, validation 20%)
+    - `python data.py make_db train`(동시에 처리할 프로세스 수를 `config.json`파일의 `num_workers`로 조절할 수 있습니다.)
+2. 학습 진행 및 모델 생성
+    - `python classifier.py train ./data/train ./model/train`(`./data/train`:데이터 위치, `./model/train`:생성모델 위치)
+3. 테스트 데이터 생성 (홈페이지 최종 제출용)
+    - `python data.py make_db test ./data/test --train_ratio=0.0` 
+4. 생성된 모델을 활용한 테스트 데이터 에측 (홈페이지 최종제출용 - zip압축 후 홈페이지 제출)
+    - `python classifier.py predict ./data/test ./model/train ./data/test/ dev Model.predict.tsv`
+5. 생성된 모델을 활용한 Validation 데이터 예측
+    - `python classifier.py predict ./data/train ./model/train ./data/train/ dev predict.tsv` 
+6. Validation 데이터 평가 및 스코어 계산
+    - `python evaluate.py evaluate predict.tsv ./data/train/data.h5py dev ./data/y_vocab.cPickle`
     - 예측한 결과에 대해 스코어를 계산합니다.
     - Python 3에서는 `y_vocab.cPickle` 파일 대신 `y_vocab.py3.cPickle` 파일을 사용하여야 합니다.
 
-
-## 제출하기
-1. `python data.py make_db test ./data/test --train_ratio=0.0`
-    - `dev` 데이터셋 전체를 예측용도로 사용하기 위해 `train_ratio` 값을 0.0으로 설정합니다.
-2. `python classifier.py predict ./data/test ./model/train ./data/test/ dev Model.predict.tsv`
-    - 위 실행 방법에서 생성한 모델로 `test` 데이터셋에 대한 예측 결과를 생성합니다.
-3. 제출
-    - Model.predict.tsv 파일을 zip으로 압축한 후 카카오 아레나 홈페이지에 제출합니다.
-    
     
 ## 기타
 - 코드 베이스를 실행하기 위해서는 데이터셋을 포함해 최소 450G 가량의 공간이 필요합니다.
