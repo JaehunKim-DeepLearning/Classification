@@ -5,7 +5,7 @@
     
     기존 Baseline Model에서 크게 변화하지 않는선에서 모델의 성능을 향상 시킴
 
-    LOGIC1 FOLDER : AVG, DOT 모델 (제출) ---> Jamo1 Data의 공백을 제거하지 않은 데이터를 사용하여 결과를 산출함(제출 실수)
+    LOGIC1 FOLDER : AVG, DOT 모델 (제출) ---> Jamo1 Data의 공백을 제거하지 않은 데이터를 사용하여 결과를 산출하여 제출함(제출 실수)
                                             공백 제거: ACC DEV: 1.030391   ACC Validation: 1.068 
                                             공백 미제거: ACC DEV: 1.026281   ACC Validation: 1.064 - 최종 제출된 모델
     LOGIC1 PRE-TRAINED MODEL DOWNLOAD ADDRESS : 
