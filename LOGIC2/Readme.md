@@ -1,19 +1,19 @@
 
 ## L2 Regulaization 비교 결과 (NO UTF MODEL 기준)
-  - L2 0.0001  		---> DEV ACC : 1.009365
-  - L2 0.00001 		---> DEV ACC : 1.018614
-  - L2 0.000001  	---> DEV ACC : 1.026462 
-  - L2 0.0000001 	---> DEV ACC : 1.025966
+  - L2 0.0001     ---> DEV ACC : 1.009365
+  - L2 0.00001    ---> DEV ACC : 1.018614
+  - L2 0.000001   ---> DEV ACC : 1.026462 
+  - L2 0.0000001  ---> DEV ACC : 1.025966
 
 
 ## L2 0.000001 각 Data 인코딩 INPUT 결과
-  - UTF NO ---> DEV ACC : 1.026462 
-  - UTF 16 ---> DEV ACC : 1.025795
-  - UTF 32 ---> DEV ACC : 1.025966
+  - UTF NO  ---> DEV ACC : 1.026462 
+  - UTF 16  ---> DEV ACC : 1.025795
+  - UTF 32  ---> DEV ACC : 1.025966
 
 
 ## Ensemble Result
-  - Three Model Ensemble ---> DEV ACC : 1.029758
+  - Three Model Ensemble  ---> DEV ACC : 1.029758
 
 
 ## 각 인코딩의 단어 사전 배치 (size10 기준)
