@@ -1,5 +1,5 @@
 
-## L2 Regulaization 비교 결과 (UTF 인코딩 미적용 기준 모델)
+1. L2 Regulaization 비교 결과 (UTF 인코딩 미적용 기준 모델)
   - L2 0.0001     ---> DEV ACC : 1.009365
   - L2 0.00001    ---> DEV ACC : 1.018614
   - L2 0.000001   ---> DEV ACC : 1.026462 
