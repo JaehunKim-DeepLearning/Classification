@@ -8,11 +8,11 @@
     LOGIC1 FOLDER : AVG, DOT 모델 (제출) ---> Data의 Seed값이 다른 모델을 사용하여 제출(제출 실수)
                                             Seed값이 같은 경우의 결과 : ACC DEV: 1.030391   ACC Validation: 1.068 
                                             Seed값이 다른 경우의 결과 : ACC DEV: 1.026281   ACC Validation: 1.064 - 최종 제출된 모델
-    LOGIC1 MODEL DOWNLOAD ADDRESS : 
+    LOGIC1 PRE-TRAINED MODEL DOWNLOAD ADDRESS : 
     
     LOGIC2 FOLDER : AVG Ensemble 모델 (미제출)
                                             ACC DEV : 1.029758  ACC Validation: 1.068
-    LOGIC2 MODEL DOWNLOAD ADDRESS : 
+    LOGIC2 PRE-TRAINED MODEL DOWNLOAD ADDRESS : 
 
 ## LOGIC1 (AVG, DOT Model)
 
